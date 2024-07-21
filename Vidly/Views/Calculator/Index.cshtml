@@ -1,0 +1,48 @@
+﻿@model Vidly.Models.CalculatorModel
+@{
+    ViewBag.Title = "Index";
+}
+<h2 style="color: deeppink ">Simple Calculator</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(m => m.Number1)
+        @Html.TextBoxFor(m => m.Number1, new {@class = "form-control"})
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(m => m.Number2)
+        @Html.TextBoxFor(m => m.Number2, new {@class = "form-control"})
+    </div>
+    <br />
+    <div>
+        @Html.RadioButtonFor(m => m.Operation, "Add") Add
+        @Html.RadioButtonFor(m => m.Operation, "Subtract") Subtract
+        @Html.RadioButtonFor(m => m.Operation, "Multiply") Multiply
+        @Html.RadioButtonFor(m => m.Operation, "Divide") Divide
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+    </div>
+    <br />
+    <div>
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <p style="color:red;">@Model.ErrorMessage</p>
+        }
+        else
+        {
+            <p style="color:green"><b>Result: @Model.Result</b></p>
+        }
+    </div>
+}
+
+
+
+
+
+
+
+
